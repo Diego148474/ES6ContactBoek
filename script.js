@@ -20,7 +20,7 @@ printPersoon = (persoon) => {
 
 lijst = () => {
     let aantalContacten = contacten.length;
-    for (let i = 0; i < aantalContacten; i++) {
+    for (let i = 0; i < aantalContacten; i++) {gi
         printPersoon(contacten[i]);
     }
 }
@@ -34,7 +34,7 @@ let zoek = (achterNaam) => {
     }
 }
 
-let add = (voorNaam, achterNaam, email, telNum) => {
+let toevoegen = (voorNaam, achterNaam, email, telNum) => {
     const nieuwContact = {
         voorNaam: voorNaam,
         achterNaam: achterNaam,
@@ -44,7 +44,9 @@ let add = (voorNaam, achterNaam, email, telNum) => {
     contacten[contacten.length] = nieuwContact;
 }
 
-add("Eva", "de Rond", "eva.derond@example.com", "333-333-333")
+toevoegen("Eva", "de Rond", "eva.derond@example.com", "333-333-333")
+toevoegen("Hans", "de Hond", "hans.dehond@example.com", "444-444-444")
 lijst();
+
 
 zoek("de Koning");
