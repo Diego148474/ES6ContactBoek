@@ -46,15 +46,17 @@ const getUser = () => {
       console.log(data);
       // in dit geval fetch ik 1 user
       user = data.results[0];
-      author = data;
+      authors = data;
+      logName(authors);
       // kijk structuur user
       makeHtml(user);
     });
 };
+
 logName = (authors) =>{
   console.log(authors);
 }
-logName(authors);
+
 
 
 /*
