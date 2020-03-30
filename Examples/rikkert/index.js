@@ -46,6 +46,7 @@ const getUser = () => {
       console.log(data);
       // in dit geval fetch ik 1 user
       user = data.results[0];
+      author = data;
       // kijk structuur user
       makeHtml(user);
     });
