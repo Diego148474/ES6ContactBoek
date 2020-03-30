@@ -7,7 +7,10 @@ function createNode(element) {
 function append(parent, el) {
     return parent.appendChild(el);
 }
-
+/*
+document.getElementById("myBtn").addEventListener("click", function () {
+    document.getElementById("demo").innerHTML = "Hello World";
+});*/
 const ul = document.getElementById('authors');
 const url = 'https://randomuser.me/api/?results=1';
 fetch(url)
@@ -98,7 +101,3 @@ fetch(url)
 
 
     })
-/*
-document.getElementById("myBtn").addEventListener("click", function () {
-    document.getElementById("demo").innerHTML = "Hello World";
-});*/
