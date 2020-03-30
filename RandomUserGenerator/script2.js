@@ -71,17 +71,17 @@ fetch(url)
 
             let toevoegen = (voorNaam, achterNaam, email, telNum, mobNum) => {
                 const nieuwContact = {
-                    voorNaam: voorNaam,
-                    achterNaam: achterNaam,
-                    email: email,
-                    telNum: telNum,
-                    mobNum: mobNum
+                    voorNaam: VNaam,
+                    achterNaam: ANaam,
+                    email: EMail,
+                    telNum: VTel,
+                    mobNum: MTel
                 }
                 contacten[contacten.length] = nieuwContact;
             }
 
-            toevoegen(VNaam, ANaam, EMail, VTel, MTel)
-            toevoegen(VNaam, ANaam, EMail, VTel, MTel)
+            toevoegen()
+            toevoegen()
             lijst();
 
 
