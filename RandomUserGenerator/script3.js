@@ -9,7 +9,7 @@ function append(parent, el) {
 }
 
 const ul = document.getElementById('authors');
-const url = 'https://randomuser.me/api/?results=2';
+const url = 'https://randomuser.me/api/?results=1';
 fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
@@ -30,8 +30,65 @@ fetch(url)
             append(li, img);
             append(li, span);
             append(ul, li);
-            
 
+
+
+            let jan = {
+                voorNaam: "Jan",
+                achterNaam: "de Toren",
+                email: "jan.detoren@example.com",
+                telNum: "111-111-111"
+            };
+
+            let klaas = {
+                voorNaam: "Klaas",
+                achterNaam: "de Koning",
+                email: "klaas.dekoning@example.com",
+                telNum: "222-222-222"
+            };
+
+            let contacten = [jan, klaas];
+
+            printPersoon = (persoon) => {
+                console.log(persoon.voorNaam + " " + persoon.achterNaam);
+            }
+
+            lijst = () => {
+                let aantalContacten = contacten.length;
+                for (let i = 0; i < aantalContacten; i++) {
+                    printPersoon(contacten[i]);
+                }
+            }
+
+            let zoek = (achterNaam) => {
+                let aantalContacten = contacten.length;
+                for (let i = 0; i < aantalContacten; i++) {
+                    if (achterNaam == contacten[i].achterNaam) {
+                        printPersoon(contacten[i]);
+                    }
+                }
+            }
+
+            let toevoegen = (voorNaam, achterNaam, email, telNum, mobNum) => {
+                const nieuwContact = {
+                    voorNaam: voorNaam,
+                    achterNaam: achterNaam,
+                    email: email,
+                    telNum: telNum,
+                    mobNum: mobNum
+                }
+                contacten[contacten.length] = nieuwContact;
+            }
+
+            toevoegen(VNaam, ANaam, EMail, VTel, MTel)
+            toevoegen(VNaam, ANaam, EMail, VTel, MTel)
+            lijst();
+
+
+            zoek("de Koning");
+
+
+        })
     })
     .catch(function (error) {
         console.log(error);
@@ -39,59 +96,3 @@ fetch(url)
 
 console.log("Beindig Test.");
 
-        let jan = {
-            voorNaam: "Jan",
-            achterNaam: "de Toren",
-            email: "jan.detoren@example.com",
-            telNum: "111-111-111"
-        };
-
-        let klaas = {
-            voorNaam: "Klaas",
-            achterNaam: "de Koning",
-            email: "klaas.dekoning@example.com",
-            telNum: "222-222-222"
-        };
-
-        let contacten = [jan, klaas];
-
-        printPersoon = (persoon) => {
-            console.log(persoon.voorNaam + " " + persoon.achterNaam);
-        }
-
-        lijst = () => {
-            let aantalContacten = contacten.length;
-            for (let i = 0; i < aantalContacten; i++) {
-                printPersoon(contacten[i]);
-            }
-        }
-
-        let zoek = (achterNaam) => {
-            let aantalContacten = contacten.length;
-            for (let i = 0; i < aantalContacten; i++) {
-                if (achterNaam == contacten[i].achterNaam) {
-                    printPersoon(contacten[i]);
-                }
-            }
-        }
-
-        let toevoegen = (voorNaam, achterNaam, email, telNum, mobNum) => {
-            const nieuwContact = {
-                voorNaam: voorNaam,
-                achterNaam: achterNaam,
-                email: email,
-                telNum: telNum,
-                mobNum: mobNum
-            }
-            contacten[contacten.length] = nieuwContact;
-        }
-
-        toevoegen(VNaam, ANaam, EMail, VTel, MTel)
-        toevoegen(VNaam, ANaam, EMail, VTel, MTel)
-        lijst();
-
-
-        zoek("de Koning");
-
-
-    })

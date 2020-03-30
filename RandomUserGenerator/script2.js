@@ -9,7 +9,7 @@ function append(parent, el) {
 }
 
 const ul = document.getElementById('authors');
-const url = 'https://randomuser.me/api/?results=2';
+const url = 'https://randomuser.me/api/?results=1';
 fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
