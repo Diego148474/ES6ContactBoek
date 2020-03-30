@@ -14,32 +14,34 @@ fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
         let authors = data.results;
-        return authors.map(function (author) {
-            let li = createNode('li'),
-                img = createNode('img'),
-                span = createNode('span');
-            img.src = author.picture.medium;
+        authors.map(function (author) {
+            function ophalen() {
 
-            let VNaam = span.innerHTML = `${author.name.first}`;
-            let ANaam = span.innerHTML = `${author.name.last}`;
-            let EMail = span.innerHTML = `${author.email}`;
-            let VTel = span.innerHTML = `${author.phone}`;
-            let MTel = span.innerHTML = `${author.cell}`;
+                let li = createNode('li'),
+                    img = createNode('img'),
+                    span = createNode('span');
+                img.src = author.picture.medium;
 
-            span.innerHTML = `<br/>${author.name.first} ${author.name.last}<br/>${author.email}<br/>${author.phone}<br/>${author.cell}`;
-            append(li, img);
-            append(li, span);
-            append(ul, li);
+                let VNaam = span.innerHTML = `${author.name.first}`;
+                let ANaam = span.innerHTML = `${author.name.last}`;
+                let EMail = span.innerHTML = `${author.email}`;
+                let VTel = span.innerHTML = `${author.phone}`;
+                let MTel = span.innerHTML = `${author.cell}`;
+
+                span.innerHTML = `<br/>${author.name.first} ${author.name.last}<br/>${author.email}<br/>${author.phone}<br/>${author.cell}`;
+                append(li, img);
+                append(li, span);
+                append(ul, li);
+            }
+
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        console.log("Beindig Test.");
 
 
-
-
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-
-console.log("Beindig Test.");
 
         let jan = {
             voorNaam: "Jan",
@@ -89,7 +91,6 @@ console.log("Beindig Test.");
         }
 
         toevoegen()
-        toevoegen()
         lijst();
 
 
@@ -97,3 +98,7 @@ console.log("Beindig Test.");
 
 
     })
+/*
+document.getElementById("myBtn").addEventListener("click", function () {
+    document.getElementById("demo").innerHTML = "Hello World";
+});*/

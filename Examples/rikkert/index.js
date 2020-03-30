@@ -3,6 +3,7 @@
 let buttons = document.querySelectorAll("button");
 let divje = document.getElementsByClassName("data")[0];
 let user;
+let authors;
 
 /******** listen to things ********/
 
@@ -33,6 +34,8 @@ const makeHtml = user => {
   divje.appendChild(nameLastP);
 };
 
+
+
 const getUser = () => {
   fetch("https://randomuser.me/api/")
     .then(response => {
@@ -47,3 +50,17 @@ const getUser = () => {
       makeHtml(user);
     });
 };
+logName = (authors) =>{
+  console.log(authors);
+}
+logName(authors);
+
+
+/*
+logName = (naam) =>{
+  console.log(naam);
+}
+
+logName("YEEEET")
+
+*/
