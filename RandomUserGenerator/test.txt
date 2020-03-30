@@ -6,7 +6,3 @@ const ophalen = author => {
 let button = document.createElement(“button”);
 button.addeventlistener(‘click’ …….
 }
-
-
-
-

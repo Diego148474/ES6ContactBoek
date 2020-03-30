@@ -32,7 +32,6 @@ fetch(url)
             append(ul, li);
 
 
-
             let jan = {
                 voorNaam: "Jan",
                 achterNaam: "de Toren",
@@ -95,4 +94,3 @@ fetch(url)
     });
 
 console.log("Beindig Test.");
-
