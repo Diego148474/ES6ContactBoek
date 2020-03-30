@@ -19,7 +19,7 @@ fetch(url)
                 img = createNode('img'),
                 span = createNode('span');
             img.src = author.picture.medium;
-            span.innerHTML = `${author.name.first} ${author.name.last}`;
+            span.innerHTML = `<br/>${author.name.first} ${author.name.last}<br/>${author.email}<br/>${author.phone}<br/>${author.cell}`;
             append(li, img);
             append(li, span);
             append(ul, li);
