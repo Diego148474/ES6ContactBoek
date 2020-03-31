@@ -85,6 +85,10 @@ let removeKnop = () => {
     }
 };
 
+document.getElementById('button').addEventListener('click',() => {
+    getUser();
+})
+
 
 // const ul = document.getElementById("authors");
 // const url = "https://randomuser.me/api/?results=1";
