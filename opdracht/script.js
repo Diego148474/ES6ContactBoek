@@ -1,7 +1,7 @@
 let author;
 let nameP;
 let nameLastP;
-let divje = document.getElementById("data")[0];
+let divje = document.getElementById("data");
 
 function createNode(element) {
     return document.createElement(element);
@@ -30,7 +30,7 @@ logName = author => {
     divje.appendChild(nameLastP);
 // stap 6 (in de stap 1 functie) Kijk naar wat je hebt. Bedenk je wat school je hierover heeft geleerd. En geef jezelf ff een schouderklopje :P
 // stap 8 voeg een div toe met een id. De waarde van dit id zou ik login.uuid doen ;)
-    loginDiv.id(login.uuid);
+    loginDiv.id = author.login.uuid;
 // stap 9 (in de stap 1 functie) Koppel een event listener click aan de button en laat hem de functie van stap 10 invullen
 
     loginKnop.addEventListener("click", () => {
