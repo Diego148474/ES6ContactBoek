@@ -85,92 +85,96 @@ let removeKnop = () => {
     }
 };
 
+document.getElementById('button').addEventListener('click',() => {
+    getUser();
+})
 
-const ul = document.getElementById("authors");
-const url = "https://randomuser.me/api/?results=1";
-fetch(url)
-    .then(resp => resp.json())
-    .then(function (data) {
-        authors = data.results;
-        authors
-            .map(function (author) {
-                // stap 2 roep hier die functie aan en geef author mee
-                logName(author);
-                // commented code hieronder ff lekker negeren :yum:
-                // function ophalen() {
-                // let li = createNode('li'),
-                //     img = createNode('img'),
-                //     span = createNode('span');
-                // img.src = author.picture.medium;
-                // let VNaam = span.innerHTML = `${author.name.first}`;
-                // let ANaam = span.innerHTML = `${author.name.last}`;
-                // let EMail = span.innerHTML = `${author.email}`;
-                // let VTel = span.innerHTML = `${author.phone}`;
-                // let MTel = span.innerHTML = `${author.cell}`;
-                // span.innerHTML = `<br/>${author.name.first} ${author.name.last}<br/>${author.email}<br/>${author.phone}<br/>${author.cell}`;
-                // append(li, img);
-                // append(li, span);
-                // append(ul, li);
-                // }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
 
-        console.log("Beindig Test.");
+// const ul = document.getElementById("authors");
+// const url = "https://randomuser.me/api/?results=1";
+// fetch(url)
+//     .then(resp => resp.json())
+//     .then(function (data) {
+//         authors = data.results;
+//         authors
+//             .map(function (author) {
+// stap 2 roep hier die functie aan en geef author mee
+// logName(author);
+// commented code hieronder ff lekker negeren :yum:
+// function ophalen() {
+// let li = createNode('li'),
+//     img = createNode('img'),
+//     span = createNode('span');
+// img.src = author.picture.medium;
+// let VNaam = span.innerHTML = `${author.name.first}`;
+// let ANaam = span.innerHTML = `${author.name.last}`;
+// let EMail = span.innerHTML = `${author.email}`;
+// let VTel = span.innerHTML = `${author.phone}`;
+// let MTel = span.innerHTML = `${author.cell}`;
+// span.innerHTML = `<br/>${author.name.first} ${author.name.last}<br/>${author.email}<br/>${author.phone}<br/>${author.cell}`;
+// append(li, img);
+// append(li, span);
+// append(ul, li);
+// }
+// })
+// .catch(function (error) {
+//     console.log(error);
+// });
 
-        let jan = {
-            voorNaam: "Jan",
-            achterNaam: "de Toren",
-            email: "jan.detoren@example.com",
-            telNum: "111-111-111"
-        };
+// console.log("Beindig Test.");
 
-        let klaas = {
-            voorNaam: "Klaas",
-            achterNaam: "de Koning",
-            email: "klaas.dekoning@example.com",
-            telNum: "222-222-222"
-        };
+// let jan = {
+//     voorNaam: "Jan",
+//     achterNaam: "de Toren",
+//     email: "jan.detoren@example.com",
+//     telNum: "111-111-111"
+// };
 
-        let contacten = [jan, klaas];
+// let klaas = {
+//     voorNaam: "Klaas",
+//     achterNaam: "de Koning",
+//     email: "klaas.dekoning@example.com",
+//     telNum: "222-222-222"
+// };
 
-        printPersoon = persoon => {
-            console.log(persoon.voorNaam + " " + persoon.achterNaam);
-        };
+// let contacten = [jan, klaas];
 
-        lijst = () => {
-            let aantalContacten = contacten.length;
-            for (let i = 0; i < aantalContacten; i++) {
-                printPersoon(contacten[i]);
-            }
-        };
+// printPersoon = persoon => {
+//     console.log(persoon.voorNaam + " " + persoon.achterNaam);
+// };
 
-        let zoek = achterNaam => {
-            let aantalContacten = contacten.length;
-            for (let i = 0; i < aantalContacten; i++) {
-                if (achterNaam == contacten[i].achterNaam) {
-                    printPersoon(contacten[i]);
-                }
-            }
-        };
+// lijst = () => {
+//     let aantalContacten = contacten.length;
+//     for (let i = 0; i < aantalContacten; i++) {
+//         printPersoon(contacten[i]);
+//     }
+// };
 
-        let toevoegen = (voorNaam, achterNaam, email, telNum, mobNum) => {
-            const nieuwContact = {
-                voorNaam: VNaam,
-                achterNaam: ANaam,
-                email: EMail,
-                telNum: VTel,
-                mobNum: MTel
-            };
-            contacten[contacten.length] = nieuwContact;
-        };
+// let zoek = achterNaam => {
+//     let aantalContacten = contacten.length;
+//     for (let i = 0; i < aantalContacten; i++) {
+//         if (achterNaam == contacten[i].achterNaam) {
+//             printPersoon(contacten[i]);
+//         }
+//     }
+// };
 
-        toevoegen();
-        lijst();
+// let toevoegen = (voorNaam, achterNaam, email, telNum, mobNum) => {
+//     const nieuwContact = {
+//         voorNaam: VNaam,
+//         achterNaam: ANaam,
+//         email: EMail,
+//         telNum: VTel,
+//         mobNum: MTel
+//     };
+//     contacten[contacten.length] = nieuwContact;
+// };
 
-        zoek("de Koning");
-    });
+// toevoegen();
+// lijst();
+
+// zoek("de Koning");
+// });
 /*
 document.getElementById("myBtn").addEventListener("click", function () {
     document.getElementById("demo").innerHTML = "Hello World";
