@@ -15,7 +15,8 @@ function append(parent, el) {
 
 /******************************************************************************************************************************/
 // stap 1 maak hier een functie die de inkomende parameter logd (logName)
-logName = author => {
+const logName = author => {
+    console.log(author);
     nameP = document.createElement("p");
     nameLastP = document.createElement("button");
 // stap 7 (in de stap 1 functie) maak er nog een button bij. deze hoeft geen data als text verzin wat leuks.
@@ -52,7 +53,7 @@ const getUser = () => {
             console.log(data);
             // in dit geval fetch ik 1 user
             user = data.results[0];
-            author = data;
+            author = data.results[0];
             logName(author);
             // kijk structuur user
             makeHtml(user);
@@ -84,8 +85,10 @@ let removeKnop = () => {
         }
     }
 };
+let button = document.getElementById('knopje');
 
-document.getElementById('button').addEventListener('click',() => {
+console.log(button);
+button.addEventListener('click', () => {
     getUser();
 })
 
