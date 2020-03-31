@@ -1,7 +1,7 @@
 let author;
 let nameP;
 let nameLastP;
-let divje = document.id("data")[0];
+let divje = document.getElementById("data")[0];
 
 function createNode(element) {
     return document.createElement(element);
@@ -23,8 +23,8 @@ logName = author => {
     loginKnop = document.createElement("button");
     loginDiv = document.createElement("div");
 // stap 4 (in de stap 1 functie) maak een p voor: voornaam achternaam en de phone data en koppel dit aan elkaar (innerText).
-    nameP.innerText = user.name.first;
-    nameLastP.innerText = user.name.last;
+    nameP.innerText = author.name.first;
+    nameLastP.innerText = author.name.last;
 // stap 5 (in de stap 1 functie) verbind dit met het element die je in de html hebt gemaakt (dmv getelementbyid)
     divje.appendChild(nameP);
     divje.appendChild(nameLastP);
@@ -33,8 +33,8 @@ logName = author => {
     loginDiv.id(login.uuid);
 // stap 9 (in de stap 1 functie) Koppel een event listener click aan de button en laat hem de functie van stap 10 invullen
 
-    button.addEventListener("click", () => {
-        loginKnop.addEventListener();
+    loginKnop.addEventListener("click", () => {
+        logMailNum();
     });
 
 }
@@ -67,20 +67,16 @@ logMailNum = author => {
     loginDiv.id(emailP);
     loginDiv.id(phoneP);
     button.addEventListener("click", () => {
-        verwijder();
+        removeKnop = document.createElement
     });
 }
 // stap 11 maak een knop zoals stap 9 (zonder id) die een functie uitvoert. Geef deze functie de login.uuid mee. (functie uit stap 12)
 /******************************************************************************************************************************/
-buttons.forEach(button => {
-    button.addEventListener("click", () => {
-        login.uuid;
-    });
-});
+
 /******************************************************************************************************************************/
 // stap 12 maak een functie die het element met de id login.uuid heeft verwijderd
 /******************************************************************************************************************************/
-let verwijder = () => {
+let removeKnop = () => {
     let aantalContacten = contacten.length;
     for (let i = 0; i < aantalContacten; i++) {
         if (login.uuid == contacten[i].login.uuid) {
