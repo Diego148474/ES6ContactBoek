@@ -1,8 +1,0 @@
-authors.map(author => {
-ophalen(author);
-})
-const ophalen = author => {
-    // creer html
-let button = document.createElement(“button”);
-button.addeventlistener(‘click’ …….
-}
