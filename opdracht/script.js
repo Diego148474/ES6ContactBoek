@@ -1,13 +1,10 @@
-let author;
+let authors;
 let nameP;
 let nameLastP;
 const divje = document.getElementById("data");
 const button = document.getElementById('knopje');
 //const Mbutton = document.getElementById('Mknopje');
 let countAuthor;
-let letterM;
-let arrayM =[];
-let authors=[];
 
 function createNode(element) {
     return document.createElement(element);
@@ -17,29 +14,18 @@ function append(parent, el) {
     return parent.appendChild(el);
 }
 
+const logName = authors => {
 
-const toevoegenM= () => {
-    const newContact = {
-
-    };
-    arrayM[arrayM.length] = newContact;
-    console.log(arrayM[arrayM.length]);
-};
-
-
-const logName = author => {
-    console.log(author);
     // maak elementen
     nameP = document.createElement("p");
     nameLastP = document.createElement("button");
-    ageP = document.createElement("button");
     loginKnop = document.createElement("button");
     loginDiv = document.createElement("div");
 
     // geef elementen attributen / inhoud
-    nameP.innerText = author.name.first;
-    nameLastP.innerText = author.name.last;
-    loginDiv.id = author.login.uuid;
+    nameP.innerText = authors.name.first;
+    nameLastP.innerText = authors.name.last;
+    loginDiv.id = authors.login.uuid;
 
     // koppel attributen
     divje.appendChild(nameP);
@@ -47,42 +33,45 @@ const logName = author => {
 
     // doe dingen met elementen
     loginKnop.addEventListener("click", () => {
-        logMailNum(author);
+        logMailNum(authors);
     });
 
 }
 
 const getUser = () => {
+    // in dit geval fetch ik 1 user
     fetch("https://randomuser.me/api/?results=20")
         .then(response => {
             // defineer de data als JSON.
             return response.json();
         })
         .then(data => {
-            // log de data
-            console.log(data);
-            // in dit geval fetch ik 1 user
-            for (countAuthor = 0; countAuthor < data.results.length; countAuthor++) {
-                author = data.results[countAuthor];
+            authors = data.results;
+            //check of er een contact is dat begint met een M
+            authors = authors.filter(authors => authors.name.first[0] === "M");
+            // log de data als er 1 of meer contacten zijn die beginnen met een M
+            if (authors.length > 0) {
 
-                logName(author);
+                (console.log(authors));
 
-                letterM = nameP.innerText.charAt(0);
-                if (letterM === "M") {
-                //toevoegenM();
+                for (countAuthor = 0; countAuthor < data.results.length; countAuthor++) {
 
+                    authors = data.results[countAuthor];
+
+                    if (authors.name.first[0] === "M") {
+                        logName(authors);
+                    }
 
                 }
-                authors = data.results;
-                authors = authors.filter(author => author.name.first[0] === "M");
-                console.log(authors);
 
-
+            } else {
+                console.log("Er zijn geen contacten gevonden die beginnen met M")
             }
+
         });
 };
 
-const logMailNum = author => {
+const logMailNum = authors => {
     // maak elementen
     emailP = document.createElement("p");
     phoneP = document.createElement("button");
