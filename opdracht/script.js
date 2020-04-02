@@ -3,6 +3,11 @@ let nameP;
 let nameLastP;
 const divje = document.getElementById("data");
 const button = document.getElementById('knopje');
+//const Mbutton = document.getElementById('Mknopje');
+let countAuthor;
+let letterM;
+let arrayM =[];
+let toevoegenM;
 
 function createNode(element) {
     return document.createElement(element);
@@ -11,6 +16,16 @@ function createNode(element) {
 function append(parent, el) {
     return parent.appendChild(el);
 }
+
+
+toevoegenM= () => {
+    const newContact = {
+
+    };
+    arrayM[arrayM.length] = newContact;
+    console.log(arrayM[arrayM.length]);
+};
+
 
 const logName = author => {
     console.log(author);
@@ -38,7 +53,7 @@ const logName = author => {
 }
 
 const getUser = () => {
-    fetch("https://randomuser.me/api/")
+    fetch("https://randomuser.me/api/?results=20")
         .then(response => {
             // defineer de data als JSON.
             return response.json();
@@ -47,8 +62,16 @@ const getUser = () => {
             // log de data
             console.log(data);
             // in dit geval fetch ik 1 user
-            author = data.results[0];
-            logName(author);
+            for (countAuthor = 0; countAuthor < data.results.length; countAuthor++) {
+                author = data.results[countAuthor];
+
+                logName(author);
+
+                letterM = nameP.innerText.charAt(0);
+                if (letterM === "M") {
+                toevoegenM();
+                }
+            }
         });
 };
 
@@ -70,8 +93,8 @@ const logMailNum = author => {
 }
 
 
-
 console.log(button);
 button.addEventListener('click', () => {
     getUser();
 });
+
