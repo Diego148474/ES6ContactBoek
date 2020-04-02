@@ -7,7 +7,7 @@ const button = document.getElementById('knopje');
 let countAuthor;
 let letterM;
 let arrayM =[];
-let toevoegenM;
+let authors=[];
 
 function createNode(element) {
     return document.createElement(element);
@@ -18,7 +18,7 @@ function append(parent, el) {
 }
 
 
-toevoegenM= () => {
+const toevoegenM= () => {
     const newContact = {
 
     };
@@ -69,8 +69,15 @@ const getUser = () => {
 
                 letterM = nameP.innerText.charAt(0);
                 if (letterM === "M") {
-                toevoegenM();
+                //toevoegenM();
+
+
                 }
+                authors = data.results;
+                authors = authors.filter(author => author.name.first[0] === "M");
+                console.log(authors);
+
+
             }
         });
 };
