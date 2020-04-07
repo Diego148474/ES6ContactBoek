@@ -5,6 +5,9 @@ const divje = document.getElementById("data");
 const button = document.getElementById('knopje');
 //const Mbutton = document.getElementById('Mknopje');
 let countAuthor;
+let inputLetter = "A";
+let letterVeld = document.getElementById('letterVeld');
+let letters = /[A-Z]+i/;
 
 function createNode(element) {
     return document.createElement(element);
@@ -13,7 +16,10 @@ function createNode(element) {
 function append(parent, el) {
     return parent.appendChild(el);
 }
-
+letterVeld.addEventListener('keyup', function(){
+    inputLetter = letterVeld.value;
+    inputLetter =inputLetter.charAt(0).toUpperCase() + inputLetter.substr(1);
+ });
 const logName = authors => {
 
     // maak elementen
@@ -48,7 +54,7 @@ const getUser = () => {
         .then(data => {
             authors = data.results;
             //check of er een contact is dat begint met een M
-            authors = authors.filter(authors => authors.name.first[0] === "M");
+            authors = authors.filter(authors => authors.name.first[0] === inputLetter);
             // log de data als er 1 of meer contacten zijn die beginnen met een M
             if (authors.length > 0) {
 
@@ -58,14 +64,14 @@ const getUser = () => {
 
                     authors = data.results[countAuthor];
 
-                    if (authors.name.first[0] === "M") {
+                    if (authors.name.first[0] === inputLetter) {
                         logName(authors);
                     }
 
                 }
 
             } else {
-                console.log("Er zijn geen contacten gevonden die beginnen met M")
+                console.log("Er zijn geen contacten gevonden die beginnen met de aangegeven letter")
             }
 
         });
@@ -87,6 +93,7 @@ const logMailNum = authors => {
         removeKnop = document.createElement
     });
 }
+
 
 
 console.log(button);
