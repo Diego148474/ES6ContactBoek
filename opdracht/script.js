@@ -1,83 +1,85 @@
-let authors;
+let personen;
 let nameP;
 let nameLastP;
-const divje = document.getElementById("data");
-const button = document.getElementById('knopje');
+let adresP;
+let phoneP;
+const info = document.getElementById("Namen");
+const genereerKnop = document.getElementById('GenereerKnop');
 //const Mbutton = document.getElementById('Mknopje');
-let countAuthor;
-let inputLetter = "A";
+let resultatenTeller;
+let invoerLetter = "A";
 let letterVeld = document.getElementById('letterVeld');
-let letters = /[A-Z]+i/;
+let letters = /^[A-Za-z]+$/;
 
-function createNode(element) {
-    return document.createElement(element);
-}
 
-function append(parent, el) {
-    return parent.appendChild(el);
-}
-letterVeld.addEventListener('keyup', function(){
-    inputLetter = letterVeld.value;
-    inputLetter =inputLetter.charAt(0).toUpperCase() + inputLetter.substr(1);
- });
-const logName = authors => {
+createNode = element => document.createElement(element);
 
+append = (parent, el) =>  parent.appendChild(el);
+
+letterVeld.addEventListener('keyup', function () {
+    invoerLetter = letterVeld.value;
+    invoerLetter = invoerLetter.charAt(0).toUpperCase() + invoerLetter.substr(1);
+});
+
+const logName = personen => {
     // maak elementen
-    nameP = document.createElement("p");
-    nameLastP = document.createElement("button");
+    nameP = document.createElement("button");
+    nameLastP = document.createElement("p");
+    adresP = document.createElement("p");
+    phoneP = document.createElement("p");
     loginKnop = document.createElement("button");
     loginDiv = document.createElement("div");
 
     // geef elementen attributen / inhoud
-    nameP.innerText = authors.name.first;
-    nameLastP.innerText = authors.name.last;
-    loginDiv.id = authors.login.uuid;
+    nameP.innerText = personen.name.first;
+    nameLastP.innerText = personen.name.last;
+    adresP.innerText = personen.location.city;
+    phoneP.innerText = personen.phone;
+    loginDiv.id = personen.login.uuid;
 
     // koppel attributen
-    divje.appendChild(nameP);
-    divje.appendChild(nameLastP);
+    info.appendChild(nameP);
+    info.appendChild(nameLastP);
+    info.appendChild(adresP);
+    info.appendChild(phoneP);
 
     // doe dingen met elementen
     loginKnop.addEventListener("click", () => {
-        logMailNum(authors);
+        logMailNum(personen);
     });
+};
 
-}
-
-const getUser = () => {
+const ophalen = () => {
     // in dit geval fetch ik 1 user
     fetch("https://randomuser.me/api/?results=20")
         .then(response => {
-            // defineer de data als JSON.
+            // defineer de Namen als JSON.
             return response.json();
         })
-        .then(data => {
-            authors = data.results;
+        .then(Namen => {
+            personen = Namen.results;
             //check of er een contact is dat begint met een M
-            authors = authors.filter(authors => authors.name.first[0] === inputLetter);
-            // log de data als er 1 of meer contacten zijn die beginnen met een M
-            if (authors.length > 0) {
+            personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
+            // log de Namen als er 1 of meer contacten zijn die beginnen met een M
+            if (personen.length > 0) {
 
-                (console.log(authors));
+                (console.log(personen));
 
-                for (countAuthor = 0; countAuthor < data.results.length; countAuthor++) {
+                for (resultatenTeller = 0; resultatenTeller < Namen.results.length; resultatenTeller++) {
 
-                    authors = data.results[countAuthor];
+                    personen = Namen.results[resultatenTeller];
 
-                    if (authors.name.first[0] === inputLetter) {
-                        logName(authors);
+                    if (personen.name.first[0] === invoerLetter) {
+                        logName(personen);
                     }
-
                 }
-
             } else {
                 console.log("Er zijn geen contacten gevonden die beginnen met de aangegeven letter")
             }
-
         });
 };
-
-const logMailNum = authors => {
+/*
+const logMailNum = personen => {
     // maak elementen
     emailP = document.createElement("p");
     phoneP = document.createElement("button");
@@ -89,15 +91,20 @@ const logMailNum = authors => {
     loginDiv.id(phoneP);
 
     // doe dingen met elementen
-    button.addEventListener("click", () => {
+    genereerKnop.addEventListener("click", () => {
         removeKnop = document.createElement
     });
-}
+}*/
 
+const letterCheck = () => {
+    if (!invoerLetter.match(letters)) {
+        console.log("Het ingevoerde charakter is geen letter.");
+    } else {
+        ophalen();
+    }
+};
 
-
-console.log(button);
-button.addEventListener('click', () => {
-    getUser();
+genereerKnop.addEventListener('click', () => {
+    letterCheck();
 });
 
