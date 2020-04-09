@@ -3,9 +3,11 @@ let nameP;
 let nameLastP;
 let adresP;
 let phoneP;
+let cellP;
+let stateP;
 const info = document.getElementById("Namen");
+const overigDiv = document.getElementById("overig");
 const genereerKnop = document.getElementById('GenereerKnop');
-//const Mbutton = document.getElementById('Mknopje');
 let resultatenTeller;
 let invoerLetter = "A";
 let letterVeld = document.getElementById('letterVeld');
@@ -26,22 +28,21 @@ const logNaam = personen => {
     nameP = document.createElement("button");
     nameLastP = document.createElement("p");
     adresP = document.createElement("p");
-    phoneP = document.createElement("p");
-    loginKnop = document.createElement("button");
-    loginDiv = document.createElement("div");
+    cellP = document.createElement("p");
+
 
     // geef elementen attributen / inhoud
     nameP.innerText = personen.name.first;
     nameLastP.innerText = personen.name.last;
     adresP.innerText = personen.location.city;
-    phoneP.innerText = personen.phone;
-    loginDiv.id = personen.login.uuid;
+    cellP.innerText = personen.cell;
+    overigDiv.id = personen.login.uuid;
 
     // koppel attributen
     info.appendChild(nameP);
     info.appendChild(nameLastP);
     info.appendChild(adresP);
-    info.appendChild(phoneP);
+    info.appendChild(cellP);
 
     // doe dingen met elementen
     nameP.addEventListener("click", () => {
@@ -51,23 +52,25 @@ const logNaam = personen => {
 
 const logOverig = personen => {
     console.log("nationaliteit laten zien.")
-    /*
+
     // maak elementen
-    emailP = document.createElement("p");
-    phoneP = document.createElement("button");
+    stateP = document.createElement("p");
+    phoneP = document.createElement("p");
+
 
     // geef elementen inhoud / attributen
-    emailP.innerText = user.email;
-    phoneP.innerText = user.phone;
-    loginDiv.id(emailP);
-    loginDiv.id(phoneP);
+    stateP.innerText = personen.location.state;
+    phoneP.innerText = personen.phone;
+    overigDiv.appendChild(stateP);
+    overigDiv.appendChild(phoneP);
 
     // doe dingen met elementen
+    /*
     genereerKnop.addEventListener("click", () => {
-        removeKnop = document.createElement
+        verwijderknop = document.createElement;
     });
     */
-}
+};
 
 const ophalen = () => {
     // in dit geval fetch ik 1 user
