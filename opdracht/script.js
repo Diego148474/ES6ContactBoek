@@ -64,11 +64,9 @@ const logOverig = personen => {
     stateP.innerText = personen.location.state;
     phoneP.innerText = personen.phone;
 
-    overigDiv = document.getElementById("stateP");
-    overigDiv = document.getElementById("phoneP");
-
-    info.appendChild(stateP);
-    info.appendChild(phoneP);
+    overigDiv = document.getElementById("uuid");
+    overigDiv.appendChild(stateP);
+    overigDiv.appendChild(phoneP);
     // doe dingen met elementen
     /*
     genereerKnop.addEventListener("click", () => {
