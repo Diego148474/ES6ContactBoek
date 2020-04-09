@@ -44,6 +44,7 @@ const logNaam = personen => {
     info.appendChild(nameLastP);
     info.appendChild(adresP);
     info.appendChild(cellP);
+    info.appendChild(overigDiv);
 
     // doe dingen met elementen
     nameP.addEventListener("click", () => {
