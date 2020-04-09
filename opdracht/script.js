@@ -38,7 +38,7 @@ const logNaam = personen => {
     nameLastP.innerText = personen.name.last;
     adresP.innerText = personen.location.city;
     cellP.innerText = personen.cell;
-    overigDiv.id = personen.login.uuid;
+    overigDiv.setAttribute("id", personen.login.uuid);
 
     // koppel attributen
     info.appendChild(nameP);
