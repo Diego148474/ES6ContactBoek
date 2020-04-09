@@ -6,12 +6,14 @@ let phoneP;
 let cellP;
 let stateP;
 const info = document.getElementById("Namen");
-const overigDiv = document.getElementById("overig");
+let overigDiv;
 const genereerKnop = document.getElementById('GenereerKnop');
+//const Mbutton = document.getElementById('Mknopje');
 let resultatenTeller;
 let invoerLetter = "A";
 let letterVeld = document.getElementById('letterVeld');
 let letters = /^[A-Za-z]+$/;
+
 
 
 createNode = element => document.createElement(element);
@@ -29,7 +31,7 @@ const logNaam = personen => {
     nameLastP = document.createElement("p");
     adresP = document.createElement("p");
     cellP = document.createElement("p");
-
+    overigDiv = document.createElement("div");
 
     // geef elementen attributen / inhoud
     nameP.innerText = personen.name.first;
@@ -61,8 +63,8 @@ const logOverig = personen => {
     // geef elementen inhoud / attributen
     stateP.innerText = personen.location.state;
     phoneP.innerText = personen.phone;
-    overigDiv.appendChild(stateP);
-    overigDiv.appendChild(phoneP);
+    overigDiv.id(stateP);
+    overigDiv.id(phoneP);
 
     // doe dingen met elementen
     /*
