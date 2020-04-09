@@ -15,7 +15,6 @@ let letterVeld = document.getElementById('letterVeld');
 let letters = /^[A-Za-z]+$/;
 
 
-
 createNode = element => document.createElement(element);
 
 append = (parent, el) => parent.appendChild(el);
@@ -63,9 +62,12 @@ const logOverig = personen => {
     // geef elementen inhoud / attributen
     stateP.innerText = personen.location.state;
     phoneP.innerText = personen.phone;
-    overigDiv.id(stateP);
-    overigDiv.id(phoneP);
 
+    overigDiv = document.getElementById("stateP");
+    overigDiv = document.getElementById("phoneP");
+
+    info.appendChild(stateP);
+    info.appendChild(phoneP);
     // doe dingen met elementen
     /*
     genereerKnop.addEventListener("click", () => {
