@@ -8,7 +8,7 @@ let stateP;
 const info = document.getElementById("Namen");
 let overigDiv;
 const genereerKnop = document.getElementById('GenereerKnop');
-//const Mbutton = document.getElementById('Mknopje');
+let verwijderknop;
 let resultatenTeller;
 let invoerLetter = "A";
 let letterVeld = document.getElementById('letterVeld');
@@ -58,21 +58,25 @@ const logOverig = personen => {
     // maak elementen
     stateP = document.createElement("p");
     phoneP = document.createElement("p");
+    verwijderknop = document.createElement("button");
 
 
     // geef elementen inhoud / attributen
     stateP.innerText = personen.location.state;
     phoneP.innerText = personen.phone;
 
-    overigDiv = document.getElementById("uuid");
+    overigDiv = document.getElementById(personen.login.uuid);
     overigDiv.appendChild(stateP);
     overigDiv.appendChild(phoneP);
+    overigDiv.appendChild(verwijderknop);
     // doe dingen met elementen
-    /*
-    genereerKnop.addEventListener("click", () => {
-        verwijderknop = document.createElement;
+
+    verwijderknop.addEventListener("click", () => {
+        overigDiv.removeElement(stateP);
+        overigDiv.removeElement(phoneP);
+        overigDiv.removeElement(verwijderknop);
     });
-    */
+
 };
 
 const ophalen = () => {
