@@ -53,7 +53,6 @@ const logNaam = personen => {
 };
 
 const logOverig = personen => {
-    console.log("nationaliteit laten zien.")
 
     // maak elementen
     stateP = document.createElement("p");
