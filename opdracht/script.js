@@ -14,14 +14,14 @@ let letters = /^[A-Za-z]+$/;
 
 createNode = element => document.createElement(element);
 
-append = (parent, el) =>  parent.appendChild(el);
+append = (parent, el) => parent.appendChild(el);
 
 letterVeld.addEventListener('keyup', function () {
     invoerLetter = letterVeld.value;
     invoerLetter = invoerLetter.charAt(0).toUpperCase() + invoerLetter.substr(1);
 });
 
-const logName = personen => {
+const logNaam = personen => {
     // maak elementen
     nameP = document.createElement("button");
     nameLastP = document.createElement("p");
@@ -44,10 +44,30 @@ const logName = personen => {
     info.appendChild(phoneP);
 
     // doe dingen met elementen
-    loginKnop.addEventListener("click", () => {
-        logMailNum(personen);
+    nameP.addEventListener("click", () => {
+        logOverig(personen);
     });
 };
+
+const logOverig = personen => {
+    console.log("nationaliteit laten zien.")
+    /*
+    // maak elementen
+    emailP = document.createElement("p");
+    phoneP = document.createElement("button");
+
+    // geef elementen inhoud / attributen
+    emailP.innerText = user.email;
+    phoneP.innerText = user.phone;
+    loginDiv.id(emailP);
+    loginDiv.id(phoneP);
+
+    // doe dingen met elementen
+    genereerKnop.addEventListener("click", () => {
+        removeKnop = document.createElement
+    });
+    */
+}
 
 const ophalen = () => {
     // in dit geval fetch ik 1 user
@@ -70,7 +90,7 @@ const ophalen = () => {
                     personen = Namen.results[resultatenTeller];
 
                     if (personen.name.first[0] === invoerLetter) {
-                        logName(personen);
+                        logNaam(personen);
                     }
                 }
             } else {
@@ -78,23 +98,6 @@ const ophalen = () => {
             }
         });
 };
-/*
-const logMailNum = personen => {
-    // maak elementen
-    emailP = document.createElement("p");
-    phoneP = document.createElement("button");
-
-    // geef elementen inhoud / attributen
-    emailP.innerText = user.email;
-    phoneP.innerText = user.phone;
-    loginDiv.id(emailP);
-    loginDiv.id(phoneP);
-
-    // doe dingen met elementen
-    genereerKnop.addEventListener("click", () => {
-        removeKnop = document.createElement
-    });
-}*/
 
 const letterCheck = () => {
     if (!invoerLetter.match(letters)) {
