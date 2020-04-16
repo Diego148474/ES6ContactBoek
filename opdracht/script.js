@@ -14,6 +14,7 @@ let letterVeld = document.getElementById('letterVeld');
 let letters = /^[A-Za-z]+$/;
 
 
+
 createNode = element => document.createElement(element);
 
 append = (parent, el) => parent.appendChild(el);
@@ -24,6 +25,11 @@ letterVeld.addEventListener('keyup', function () {
 });
 
 const logNaam = personen => {
+
+// verwijderen oude opgehaalde code
+    // test = () => {info.removeChild(info.childNodes[0]);}
+   // info.forEach(test);
+
     // maak elementen
     nameP = document.createElement("button");
     nameLastP = document.createElement("p");
@@ -49,6 +55,12 @@ const logNaam = personen => {
     nameP.addEventListener("click", () => {
         logOverig(personen);
     });
+    let table = document.getElementById("myTable");
+    let row = table.insertRow(2);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    cell1.innerHTML = nameP.innerText;
+    cell2.innerHTML = nameLastP.innerText;
 };
 
 const logOverig = personen => {
@@ -72,7 +84,7 @@ const logOverig = personen => {
 };
 
 const ophalen = () => {
-    // in dit geval fetch ik 1 user
+    // in dit geval fetch ik 20 user
     fetch("https://randomuser.me/api/?results=20")
         .then(response => {
             // defineer de Namen als JSON.
@@ -80,9 +92,9 @@ const ophalen = () => {
         })
         .then(Namen => {
             personen = Namen.results;
-            //check of er een contact is dat begint met een M
-            personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
-            // log de Namen als er 1 of meer contacten zijn die beginnen met een M
+            //check of er een contact is dat begint met een A
+           // personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
+            // log de Namen als er 1 of meer contacten zijn die beginnen met een A
             if (personen.length > 0) {
 
                 (console.log(personen));
@@ -91,9 +103,9 @@ const ophalen = () => {
 
                     personen = Namen.results[resultatenTeller];
 
-                    if (personen.name.first[0] === invoerLetter) {
+                    //if (personen.name.first[0] === invoerLetter) {
                         logNaam(personen);
-                    }
+                   // }
                 }
             } else {
                 console.log("Er zijn geen contacten gevonden die beginnen met de aangegeven letter")
@@ -113,3 +125,49 @@ genereerKnop.addEventListener('click', () => {
     letterCheck();
 });
 
+
+/*
+code van eem oude sort die ik eerder gemaakt heb
+$(document).ready(function(){
+    $(document).on('click', '.column_sort', function(){
+        var column_name = $(this).attr("id");
+        var order = $(this).data("order");
+        var arrow = '';
+        //glyphicon glyphicon-arrow-up
+        //glyphicon glyphicon-arrow-down
+        if(order == 'desc')
+        {
+            arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-down"></span>';
+        }
+        else
+        {
+            arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-up"></span>';
+        }
+        $.ajax({
+            url:"sort.php",
+            method:"POST",
+            data:{column_name:column_name, order:order},
+            success:function(data)
+            {
+                $('#employee_table').html(data);
+                $('#'+column_name+'').append(arrow);
+            }
+        })
+    });
+});*/
+
+
+
+
+//verwijderknop.addEventListener("click", () => {
+//     overigDiv.removeElement(stateP);
+//     overigDiv.removeElement(phoneP);
+//     overigDiv.removeElement(verwijderknop);
+// });
+// let verwijderknop;
+// verwijderknop = document.createElement("button");
+//
+//
+// verwijderknop = document.createElement("button");
+//
+// overigDiv.appendChild(verwijderknop);
