@@ -1,10 +1,4 @@
-let personen;
-let nameP;
-let nameLastP;
-let adresP;
-let phoneP;
-let cellP;
-let stateP;
+let personen, nameP, nameLastP, adresP, phoneP, cellP, stateP;
 const info = document.getElementById("Namen");
 let overigDiv;
 const genereerKnop = document.getElementById('GenereerKnop');
@@ -20,9 +14,13 @@ letterVeld.addEventListener('keyup', function () {
     invoerLetter = invoerLetter.charAt(0).toUpperCase() + invoerLetter.substr(1);
 });
 const logNaam = personen => {
-// verwijderen oude opgehaalde code
-    // test = () => {info.removeChild(info.childNodes[0]);}
-    // info.forEach(test);
+    let table = document.getElementById("myTable");
+
+    if(table.length > 0) {
+
+        document.getElementById("myTable").deleteRow(0);
+    }
+
     // maak elementen
     nameP = document.createElement("button");
     nameLastP = document.createElement("p");
@@ -45,7 +43,7 @@ const logNaam = personen => {
     nameP.addEventListener("click", () => {
         logOverig(personen);
     });
-    let table = document.getElementById("myTable");
+
     let row = table.insertRow(1);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
@@ -66,7 +64,7 @@ const logOverig = personen => {
 };
 const ophalen = () => {
     // in dit geval fetch ik 20 user
-    fetch("https://randomuser.me/api/?results=20")
+    fetch("https://randomuser.me/api/?results=5")
         .then(response => {
             // defineer de Namen als JSON.
             return response.json();
@@ -95,16 +93,18 @@ const letterCheck = () => {
     }
 };
 const filterCheck = () => {
-    Namen => {
-        //check of er een contact is dat begint met een A
-        personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
-        // log de Namen als er 1 of meer contacten zijn die beginnen met een A
-        if (personen.length > 0) {
-            (console.log(personen));
-            for (resultatenTeller = 0; resultatenTeller < Namen.results.length; resultatenTeller++) {
-                personen = Namen.results[resultatenTeller];
-                logNaam(personen);
-            }
+    let  filter, a, i, txtValue;
+
+    filter = letterVeld.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        a = tr[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
         }
     }
 };
