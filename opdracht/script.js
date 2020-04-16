@@ -95,14 +95,16 @@ const letterCheck = () => {
     }
 };
 const filterCheck = () => {
-    //check of er een contact is dat begint met een A
-    personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
-    // log de Namen als er 1 of meer contacten zijn die beginnen met een A
-    if (personen.length > 0) {
-        (console.log(personen));
-        for (resultatenTeller = 0; resultatenTeller < Namen.results.length; resultatenTeller++) {
-            personen = Namen.results[resultatenTeller];
-            console.log("filter")
+    Namen => {
+        //check of er een contact is dat begint met een A
+        personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
+        // log de Namen als er 1 of meer contacten zijn die beginnen met een A
+        if (personen.length > 0) {
+            (console.log(personen));
+            for (resultatenTeller = 0; resultatenTeller < Namen.results.length; resultatenTeller++) {
+                personen = Namen.results[resultatenTeller];
+                logNaam(personen);
+            }
         }
     }
 };
