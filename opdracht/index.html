@@ -10,15 +10,17 @@
 <ul id="author"></ul>
 <!-- stap 3 maak ergens een element (div span ul table wat dan ook) en geef deze een id -->
 <button type="button" id="GenereerKnop">Genereer</button>
+<button type="button" id="FilterKnop">Filter</button>
 <div id="Namen">
     <div id="overig">
-
+        <input type="text" id="letterVeld" name="letterveld" maxlength="1" placeholder="A">
         <table id="myTable" border="1">
-            <tr><input type="text" id="letterVeld" name="letterveld" maxlength="1" placeholder="A"></tr>
+
             <tr>
-                <th id="voornaam" data-order="desc" href="#">voornaam</th>
-                <th id="achternaam" data-order="desc" href="#">achternaam</th>
+                <th>voornaam</th>
+                <th>achternaam</th>
             </tr>
+
         </table>
 
     </div>

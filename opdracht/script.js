@@ -8,11 +8,11 @@ let stateP;
 const info = document.getElementById("Namen");
 let overigDiv;
 const genereerKnop = document.getElementById('GenereerKnop');
+const filterKnop = document.getElementById('FilterKnop');
 let resultatenTeller;
 let invoerLetter = "A";
 let letterVeld = document.getElementById('letterVeld');
 let letters = /^[A-Za-z]+$/;
-
 
 
 createNode = element => document.createElement(element);
@@ -28,7 +28,7 @@ const logNaam = personen => {
 
 // verwijderen oude opgehaalde code
     // test = () => {info.removeChild(info.childNodes[0]);}
-   // info.forEach(test);
+    // info.forEach(test);
 
     // maak elementen
     nameP = document.createElement("button");
@@ -56,7 +56,7 @@ const logNaam = personen => {
         logOverig(personen);
     });
     let table = document.getElementById("myTable");
-    let row = table.insertRow(2);
+    let row = table.insertRow(1);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     cell1.innerHTML = nameP.innerText;
@@ -80,7 +80,6 @@ const logOverig = personen => {
     // doe dingen met elementen
 
 
-
 };
 
 const ophalen = () => {
@@ -92,8 +91,6 @@ const ophalen = () => {
         })
         .then(Namen => {
             personen = Namen.results;
-            //check of er een contact is dat begint met een A
-           // personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
             // log de Namen als er 1 of meer contacten zijn die beginnen met een A
             if (personen.length > 0) {
 
@@ -104,11 +101,9 @@ const ophalen = () => {
                     personen = Namen.results[resultatenTeller];
 
                     //if (personen.name.first[0] === invoerLetter) {
-                        logNaam(personen);
-                   // }
+                    logNaam(personen);
+                    // }
                 }
-            } else {
-                console.log("Er zijn geen contacten gevonden die beginnen met de aangegeven letter")
             }
         });
 };
@@ -121,42 +116,44 @@ const letterCheck = () => {
     }
 };
 
+const filterCheck = () => {
+    if (!invoerLetter.match(letters)) {
+         personen = personen.filter(personen => personen.name.first[0] === invoerLetter);
+    } else {
+        console.log("Er zijn geen contacten gevonden die beginnen met de aangegeven letter")
+    }
+};
+
+
+
 genereerKnop.addEventListener('click', () => {
     letterCheck();
 });
 
+filterKnop.addEventListener('click', () => {
+    filterCheck();
+});
 
-/*
-code van eem oude sort die ik eerder gemaakt heb
-$(document).ready(function(){
-    $(document).on('click', '.column_sort', function(){
-        var column_name = $(this).attr("id");
-        var order = $(this).data("order");
-        var arrow = '';
-        //glyphicon glyphicon-arrow-up
-        //glyphicon glyphicon-arrow-down
-        if(order == 'desc')
-        {
-            arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-down"></span>';
-        }
-        else
-        {
-            arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-up"></span>';
-        }
-        $.ajax({
-            url:"sort.php",
-            method:"POST",
-            data:{column_name:column_name, order:order},
-            success:function(data)
-            {
-                $('#employee_table').html(data);
-                $('#'+column_name+'').append(arrow);
-            }
-        })
-    });
-});*/
+//haal de info uit de cellen op
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
 
+const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+        //maak van alles een string
+        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+)
+    //kijk of de array od ascending of descending staat.
+(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
 
+//als er op de th gedrukt wordt;
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    //maak een array van de table
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        //sorteer de array
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        //laat de nieuwe table zien
+        .forEach(tr => table.appendChild(tr));
+})));
 
 
 //verwijderknop.addEventListener("click", () => {
